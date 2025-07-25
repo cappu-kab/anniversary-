@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<head>
+    <title>💖 Happy Anniversary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Dancing+Script:wght@400..700&family=Gloria+Hallelujah&family=Gluten:wght@100..900&family=Itim&family=Rubik+Vinyl&family=Shadows+Into+Light&family=Sriracha&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container surprise">
+
+        <button class="music-btn" onclick="toggleMusic()" style="font-family: 'Quicksand', sans-serif;">🎵 Tap this one
+            na </button>
+        <audio id="bgMusic" loop>
+            <source src="{{ url_for('static', filename='music/background.mp3') }}" type="audio/mpeg">
+        </audio>
+
+        <h2 class="fade-in">Guess what this song is...?🎧</h2>
+
+        <div class="input-area">
+            <input type="text" id="guessInput" placeholder="drop your guess here ~" />
+            <button id="confirmBtn" style="font-family: Comic Sans MS, Comic Sans, cursive;">OK </button>
+        </div>
+        <div class="emoji-row float-up">
+            <span>🍬</span>
+            <span>🍰</span>
+            <span>🌞</span>
+        </div>
+
+        <div id="result"></div>
+        <script>
+            document.body.addEventListener('click', function () {
+                document.getElementById('bgMusic').play();
+            }, { once: true });
+            document.addEventListener("DOMContentLoaded", function () {
+                const acceptedAnswers = [
+                    "Old With You",
+                    "old with you",
+                    "OLD WITH YOU",
+                    "Old with you",
+                    "old With You",
+                    "OldWithYou",
+                    "oldwithyou",
+                    "OLDWITHYOU",
+                    "Oldwithyou",
+                    "oldWithYou",
+                    "old_With_You",
+                    "Old_With_You",
+                    "oldwith you",
+                    "old withYou",
+                    "Old withYou",
+                    "OldWithyou",
+                ];
+
+                document.getElementById("confirmBtn").addEventListener("click", function () {
+                    const input = document.getElementById("guessInput").value.trim().toLowerCase();
+                    const result = document.getElementById("result");
+
+                    if (acceptedAnswers.includes(input)) {
+                        window.location.href = "{{ url_for('puzzle') }}";
+                    } else {
+                        result.innerText = "Wrong";
+                        result.style.color = "red";
+                    }
+                });
+            });
+        </script>
+
+        <div class="container">
+            <h1 class="headline bounce page1-title">𖹭 Happy Anniversary 𖹭</h1>
+            <p style="font-family: 'Dancing Script', cursive; font-size: 2rem;">Happy 1 year and 2 month anniversary
+                since May 25th.</p>
+            <p style="font-family: 'DM Serif Display', serif; font-size: 1rem;">"Some people search a lifetime for what
+                I found in you —
+                and I found it one ordinary day that became the
+                best part of my forever."</p>
+
+            <img src="{{ url_for('static', filename='img/balloon.PNG') }}" height="150">
+            <img src="{{ url_for('static', filename='img/cake.PNG') }}" height="150">
+            <img src="{{ url_for('static', filename='img/sun.PNG') }}" height="150">
+            <br><br>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>💖 A Note from Me</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Happy Anniversary na</h2>
+        <textarea style="font-family: 'Mali', sans-serif;" readonly> I love u
+        </textarea>
+        <br>
+        <a href="{{ url_for('message1') }}" class="btn">⬅ Back</a>
+        <a href="{{ url_for('likes') }}" class="btn">Next ➡</a>
+    </div>
+</body>
+
+</html>

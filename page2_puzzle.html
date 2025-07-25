@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>💌 A Little Surprise</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Gloria+Hallelujah&family=Gluten:wght@100..900&family=Itim&family=Rubik+Vinyl&family=Shadows+Into+Light&family=Sriracha&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="headline bounce page2-title">Here’s some code I wrote for you…</h2>
+        <pre id="code" class="code">
+def decode_message():
+    secret = [73, 32, 98, 108, 111, 111, 109, 32, 111, 110, 108, 121, 32, 105, 110, 32, 121, 111, 117, 114, 32,
+        108, 105, 103, 104, 116, 32, 8212, 32, 97, 108, 119, 97, 121, 115, 32, 116, 117, 114, 110, 105, 110, 103, 44,
+        32, 97, 108, 119, 97, 121, 115, 32, 116, 114, 117, 101, 46]
+    message = ''.join(chr(c) for c in secret)
+    return message
+
+result = decode_message()
+    </pre>
+        <button class="btn" onclick="runCode()">Run</button>
+        <pre id="output" class="output"></pre>
+        <a href="{{ url_for('home') }}" class="btn">⬅ Back</a>
+        <a href="{{ url_for('memory') }}" id="nextBtn" class="btn" style="display: none;">Next ➡</a>
+    </div>
+
+    <script>
+        async function runCode() {
+            const pyodide = await loadPyodide();
+            const code = document.getElementById("code").innerText;
+            await pyodide.runPythonAsync(code);
+            const result = pyodide.globals.get('result');
+            document.getElementById("output").innerText = result;
+            document.getElementById("nextBtn").style.display = "inline-block";
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+/* wishes.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #ffe5ec, #fdf0f4);
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wish-container {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #d6336c;
+  margin-bottom: 30px;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.floating-wishes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.wish {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  color: #6c1b3c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.wish:nth-child(1) { animation-delay: 0.5s; }
+.wish:nth-child(2) { animation-delay: 1s; }
+.wish:nth-child(3) { animation-delay: 1.5s; }
+.wish:nth-child(4) { animation-delay: 2s; }
+.wish:nth-child(5) { animation-delay: 2.5s; }
+.wish:nth-child(6) { animation-delay: 3s; }
+.wish:nth-child(7) { animation-delay: 3.5s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.nav-buttons {
+  margin-top: 40px;
+}
+
+.wish-btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 24px;
+  background-color: #f783ac;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.wish-btn:hover {
+  background-color: #f06595;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* Optional: floating hearts or stars */
+.wish-container::before {
+  content: "\2764 \2728 \1F496 \2726 ";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: rgba(255, 192, 203, 0.4);
+  animation: floatHearts 6s infinite ease-in-out;
+}
+
+@keyframes floatHearts {
+  0% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+  50% { transform: translateX(-50%) translateY(-20px); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+}

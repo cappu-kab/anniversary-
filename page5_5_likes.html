@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>10 Things I Love About You</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cards.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="card-container">
+        <h2>10 Things I Love About You 💘</h2>
+
+        <div class="cards">
+            {% for i in range(1, 11) %}
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span>{{ i }}</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>{{ likes[i - 1] }}</p>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="{{ url_for('message2') }}" class="btn">⬅ Back</a>
+            <a href="{{ url_for('final') }}" class="btn">Next ➡</a>
+        </div>
+    </div>
+</body>
+
+</html>
